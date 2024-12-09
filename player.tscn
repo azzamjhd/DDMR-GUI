@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbcm60uq38trs"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_g2n02"]
+[ext_resource type="Texture2D" uid="uid://baambio2vxqll" path="res://icons/robot.svg" id="2_bgbnv"]
+[ext_resource type="Script" path="res://trali.gd" id="3_jt2nb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ghxu"]
+radius = 64.0
+
+[sub_resource type="Curve" id="Curve_k2t6v"]
+_data = [Vector2(0, 0.335849), 0.0, 0.0, 0, 0, Vector2(1, 0.54717), 0.0962699, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_b6m67"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0.586995, 0.925641, 1, 0.921569, 1, 0.0627451, 1)
+
+[sub_resource type="Curve" id="Curve_hh2mc"]
+max_value = 5.0
+_data = [Vector2(0, 1.30189), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_eh7hc"]
+colors = PackedColorArray(0.952941, 0.866667, 0.172549, 1, 0.996078, 0.176471, 0.270588, 1)
+
+[sub_resource type="Gradient" id="Gradient_kh66q"]
+colors = PackedColorArray(0.952941, 0.866667, 0.172549, 1, 0.996078, 0.176471, 0.270588, 1)
+
+[sub_resource type="Gradient" id="Gradient_kqp4t"]
+colors = PackedColorArray(0.952941, 0.866667, 0.172549, 1, 0.996078, 0.176471, 0.270588, 1)
+
+[node name="player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_g2n02")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -9)
+texture = ExtResource("2_bgbnv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(0.328125, 0.328125)
+shape = SubResource("CircleShape2D_3ghxu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.328125, 0.328125)
+offset = Vector2(0, 100)
+limit_left = -2000
+limit_top = -2000
+limit_right = 2000
+limit_bottom = 2000
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="trali" type="Line2D" parent="." node_paths=PackedStringArray("parent")]
+show_behind_parent = true
+width_curve = SubResource("Curve_k2t6v")
+gradient = SubResource("Gradient_b6m67")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("3_jt2nb")
+parent = NodePath("..")
+trail_length = 1000
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(0, -37)
+points = PackedVector2Array(0, 0, 0, -40)
+width = 2.0
+width_curve = SubResource("Curve_hh2mc")
+gradient = SubResource("Gradient_eh7hc")
+joint_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="."]
+visible = false
+position = Vector2(24.9128, -28.9128)
+rotation = 0.785398
+scale = Vector2(1.066, 1)
+points = PackedVector2Array(0, 0, 1.90735e-06, -39.7213)
+width = 2.0
+width_curve = SubResource("Curve_hh2mc")
+gradient = SubResource("Gradient_kh66q")
+joint_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="."]
+visible = false
+position = Vector2(-25, -29)
+rotation = -0.785398
+points = PackedVector2Array(0, 0, 0, -40)
+width = 2.0
+width_curve = SubResource("Curve_hh2mc")
+gradient = SubResource("Gradient_kqp4t")
+joint_mode = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = -1.57079
+
+[node name="wheel" type="Line2D" parent="Node2D"]
+position = Vector2(-40, 0)
+points = PackedVector2Array(0, 10, 0, -10)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="wheel2" type="Line2D" parent="Node2D"]
+position = Vector2(40, 0)
+points = PackedVector2Array(0, 10, 0, -10)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="body" type="Line2D" parent="Node2D"]
+rotation = 3.14159
+points = PackedVector2Array(-27, 13, 27, 13, 27, -18, 15, -30, -15, -30, -27, -18)
+closed = true
+joint_mode = 2

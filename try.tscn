@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://byawpn078y27a"]
+
+[ext_resource type="PackedScene" uid="uid://bffe6hu0v56d3" path="res://test.tscn" id="1_8x4gk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/VBoxContainer/Control"]
+clip_contents = true
+layout_mode = 2
+offset_left = -49.0
+offset_top = -30.0
+offset_right = 1014.0
+offset_bottom = 346.0
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/VBoxContainer/Control/SubViewportContainer"]
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(880, 321)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Node2D" parent="PanelContainer/VBoxContainer/Control/SubViewportContainer/SubViewport" instance=ExtResource("1_8x4gk")]
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2

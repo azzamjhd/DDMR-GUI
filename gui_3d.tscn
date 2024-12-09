@@ -1,0 +1,1046 @@
+[gd_scene load_steps=39 format=3 uid="uid://cbir7ngjqop6a"]
+
+[ext_resource type="Script" path="res://3dplayer.gd" id="1_iqaab"]
+[ext_resource type="Texture2D" uid="uid://bwkrhu7sxosvo" path="res://checkered.png" id="1_t3tlx"]
+[ext_resource type="Script" path="res://panel.gd" id="3_11wyk"]
+[ext_resource type="Script" path="res://leftSide.gd" id="4_4ffoc"]
+[ext_resource type="Texture2D" uid="uid://h2byxquaftg6" path="res://icons/wifi.svg" id="5_75igp"]
+[ext_resource type="Texture2D" uid="uid://bs7cp55qpbjtc" path="res://icons/input.svg" id="6_t8f8v"]
+[ext_resource type="Texture2D" uid="uid://beh25m436432u" path="res://icons/close.svg" id="7_2x3ln"]
+[ext_resource type="Texture2D" uid="uid://wj2wjbf0h3yn" path="res://icons/cancel.svg" id="8_edetk"]
+[ext_resource type="Texture2D" uid="uid://bajh5enlgvgii" path="res://icons/check_circle_outline.svg" id="9_ie2l1"]
+[ext_resource type="Script" path="res://Serial.gd" id="10_q7w3i"]
+[ext_resource type="Script" path="res://rightSide.gd" id="11_6tckt"]
+[ext_resource type="Texture2D" uid="uid://1tiof7koapwl" path="res://icons/speed.svg" id="12_vm4un"]
+[ext_resource type="Texture2D" uid="uid://bixn2b5ahpytj" path="res://icons/radar.svg" id="13_qw0e8"]
+[ext_resource type="Texture2D" uid="uid://dqblig1725141" path="res://icons/keyboard_arrow_down.svg" id="14_mpog7"]
+[ext_resource type="Script" path="res://sensor.gd" id="15_au84g"]
+[ext_resource type="Script" path="res://odometry.gd" id="16_vhhka"]
+[ext_resource type="Texture2D" uid="uid://p8py4bc640ck" path="res://icons/keyboard_arrow_up.svg" id="17_bn30k"]
+[ext_resource type="Texture2D" uid="uid://dktnfxw421qr0" path="res://icons/keyboard_arrow_left.svg" id="18_byty6"]
+[ext_resource type="Texture2D" uid="uid://dimg346gw20n4" path="res://icons/keyboard_arrow_right.svg" id="19_mu20q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_24nwe"]
+sky_top_color = Color(0.381507, 0.647399, 0.970896, 1)
+sky_horizon_color = Color(0.713809, 0.55947, 0.892834, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_c87wm"]
+sky_material = SubResource("ProceduralSkyMaterial_24nwe")
+
+[sub_resource type="Environment" id="Environment_iqt5w"]
+background_mode = 2
+sky = SubResource("Sky_c87wm")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.1
+reflected_light_source = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_576aa"]
+size = Vector3(2, 1.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo6mj"]
+albedo_color = Color(0.469885, 0.664894, 0.950294, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0oge6"]
+albedo_color = Color(0.0859838, 0.0859838, 0.0859838, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inu0q"]
+albedo_color = Color(0.0859838, 0.0859838, 0.0859838, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_b2go2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auo75"]
+albedo_texture = ExtResource("1_t3tlx")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_8qvjh"]
+material = SubResource("StandardMaterial3D_auo75")
+size = Vector3(1000, 0.2, 1000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mw8v8"]
+data = PackedVector3Array(-500, 0.1, 500, 500, 0.1, 500, -500, -0.1, 500, 500, 0.1, 500, 500, -0.1, 500, -500, -0.1, 500, 500, 0.1, -500, -500, 0.1, -500, 500, -0.1, -500, -500, 0.1, -500, -500, -0.1, -500, 500, -0.1, -500, 500, 0.1, 500, 500, 0.1, -500, 500, -0.1, 500, 500, 0.1, -500, 500, -0.1, -500, 500, -0.1, 500, -500, 0.1, -500, -500, 0.1, 500, -500, -0.1, -500, -500, 0.1, 500, -500, -0.1, 500, -500, -0.1, -500, 500, 0.1, 500, -500, 0.1, 500, 500, 0.1, -500, -500, 0.1, 500, -500, 0.1, -500, 500, 0.1, -500, -500, -0.1, 500, 500, -0.1, 500, -500, -0.1, -500, 500, -0.1, 500, 500, -0.1, -500, -500, -0.1, -500)
+
+[sub_resource type="InputEventKey" id="InputEventKey_u4uty"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_yuot7"]
+events = [SubResource("InputEventKey_u4uty")]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cgt2q"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_puu0e"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_y1uxu"]
+device = -1
+keycode = 32
+physical_keycode = 32
+key_label = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_htocm"]
+events = [SubResource("InputEventKey_y1uxu")]
+
+[sub_resource type="ImageTexture" id="ImageTexture_k8mgv"]
+
+[sub_resource type="GDScript" id="GDScript_gop3u"]
+script/source = "extends MarginContainer
+@onready var forward_btn = %forwardBtn
+@onready var left_btn = %leftBtn
+@onready var back_btn = %backBtn
+@onready var right_btn = %rightBtn
+
+func show_buttons(state: bool):
+	forward_btn.disabled = state
+	back_btn.disabled = state
+	left_btn.disabled = state
+	right_btn.disabled = state
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_mode_toggle_toggled(toggled_on):
+	if toggled_on:
+		show_buttons(true)
+	else:
+		show_buttons(false)
+"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iqt5w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="3dplayer" type="CharacterBody3D" parent="."]
+script = ExtResource("1_iqaab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3dplayer"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.6, 0.25)
+shape = SubResource("BoxShape3D_576aa")
+
+[node name="body" type="CSGPolygon3D" parent="3dplayer"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.2, 0.25)
+polygon = PackedVector2Array(-1, -1, -1, 1, 0.5, 1, 1, 0.5, 1, -0.5, 0.5, -1)
+material = SubResource("StandardMaterial3D_eo6mj")
+
+[node name="wheel" type="CSGCylinder3D" parent="3dplayer"]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -1.2, 0.5, 0)
+height = 0.3
+sides = 32
+material = SubResource("StandardMaterial3D_0oge6")
+
+[node name="wheel2" type="CSGCylinder3D" parent="3dplayer"]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 1.2, 0.5, 0)
+height = 0.3
+sides = 32
+material = SubResource("StandardMaterial3D_inu0q")
+
+[node name="TrailEmitter" type="TrailEmitter" parent="3dplayer"]
+material = SubResource("FogMaterial_b2go2")
+geometry_nodepath = NodePath("..")
+size = 0.2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15034, 0.5, 0.562357)
+
+[node name="ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_8qvjh")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mw8v8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -5.80937, 4.70065, 0)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+script = ExtResource("3_11wyk")
+
+[node name="sidePanel" type="HBoxContainer" parent="GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="leftSide" type="PanelContainer" parent="GUI/Control/VBoxContainer/sidePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_4ffoc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="NetworkTabBar" type="TabBar" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tab_count = 2
+tab_0/title = "IP"
+tab_0/icon = ExtResource("5_75igp")
+tab_1/title = "serial"
+tab_1/icon = ExtResource("6_t8f8v")
+
+[node name="close" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+shortcut = SubResource("Shortcut_yuot7")
+icon = ExtResource("7_2x3ln")
+
+[node name="IP" type="MarginContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+layout_mode = 2
+text = "IP Adress"
+
+[node name="ip_input" type="LineEdit" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "0.0.0.0"
+
+[node name="Label2" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+layout_mode = 2
+text = "Port"
+
+[node name="port_input" type="LineEdit" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5000"
+placeholder_text = "5000"
+
+[node name="Control" type="Control" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer"]
+layout_mode = 2
+
+[node name="connectBtn" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Connect"
+
+[node name="not_connected" type="TextureRect" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("8_edetk")
+expand_mode = 3
+
+[node name="disconnectBtn" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Diconnect"
+
+[node name="connected" type="TextureRect" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/IP/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("9_ie2l1")
+expand_mode = 3
+
+[node name="Serial" type="MarginContainer" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("10_q7w3i")
+
+[node name="TextEdit" type="TextEdit" parent="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/Serial"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "helo ohifha oihdao hfioa h
+faoihaohdfoi haofh 
+hfoiahfiooahdioaf
+a
+a
+a
+a
+a
+a
+a
+a
+a
+
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a"
+editable = false
+selecting_enabled = false
+
+[node name="view" type="Control" parent="GUI/Control/VBoxContainer/sidePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="coordinate" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/view"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.339095, 0.339095, 0.339095, 1)
+theme_override_constants/outline_size = 5
+text = "(1.111,1.11)"
+
+[node name="rightSide" type="PanelContainer" parent="GUI/Control/VBoxContainer/sidePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("11_6tckt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="close2" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+icon = ExtResource("7_2x3ln")
+
+[node name="setting" type="TabBar" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tab_count = 2
+tab_0/title = "Motor"
+tab_0/icon = ExtResource("12_vm4un")
+tab_1/title = "Pos"
+tab_1/icon = ExtResource("13_qw0e8")
+
+[node name="Motor" type="MarginContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PID2" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer"]
+layout_mode = 2
+text = "P"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer2"]
+layout_mode = 2
+text = "I"
+horizontal_alignment = 1
+
+[node name="LineEdit2" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer2"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer3"]
+layout_mode = 2
+text = "D"
+horizontal_alignment = 1
+
+[node name="LineEdit3" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/PID2/VBoxContainer3"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max Velocity"
+
+[node name="SpinBox" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+step = 0.1
+value = 1.0
+alignment = 3
+prefix = " "
+suffix = "m/s"
+
+[node name="Control" type="Control" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Motor/VBoxContainer"]
+layout_mode = 2
+text = "Set"
+
+[node name="Odometry" type="MarginContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+
+[node name="PID" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer"]
+layout_mode = 2
+text = "P"
+horizontal_alignment = 1
+
+[node name="P_setting" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer2"]
+layout_mode = 2
+text = "I"
+horizontal_alignment = 1
+
+[node name="I_setting" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer3"]
+layout_mode = 2
+text = "D"
+horizontal_alignment = 1
+
+[node name="D_setting" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/PID/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_cgt2q")
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedLimit" type="HBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit/VBoxContainer"]
+layout_mode = 2
+text = "Max Linear"
+
+[node name="max_linear" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_puu0e")
+max_value = 5.0
+step = 0.1
+value = 0.5
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit/VBoxContainer2"]
+layout_mode = 2
+text = "Max Angular"
+
+[node name="max_omega" type="SpinBox" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer/SpeedLimit/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_puu0e")
+max_value = 5.0
+step = 0.1
+value = 3.0
+alignment = 1
+
+[node name="Control" type="Control" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="pid_gains_btn" type="Button" parent="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/Odometry/VBoxContainer"]
+layout_mode = 2
+text = "Set"
+
+[node name="bottom" type="Panel" parent="GUI/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="close3" type="Button" parent="GUI/Control/VBoxContainer/bottom"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -35.0
+offset_right = 16.0
+offset_bottom = -3.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+shortcut = SubResource("Shortcut_htocm")
+icon = ExtResource("14_mpog7")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="hbox" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+theme_override_constants/separation = 0
+
+[node name="content" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer4" type="MarginContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4"]
+layout_mode = 2
+
+[node name="sensorTitle" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorTitle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SENSORS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sensorContent" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="left" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_au84g")
+value = 50.0
+max_value = 100.0
+suffix = "cm"
+
+[node name="range" type="VSlider" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+step = 0.01
+value = 41.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+
+[node name="value" type="SpinBox" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_k8mgv")
+step = 0.1
+allow_greater = true
+allow_lesser = true
+alignment = 3
+editable = false
+suffix = "cm"
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="front" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_au84g")
+value = 50.0
+max_value = 100.0
+suffix = "cm"
+
+[node name="range" type="VSlider" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/front"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+step = 0.01
+value = 41.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+
+[node name="value" type="SpinBox" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/front"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_k8mgv")
+step = 0.1
+allow_greater = true
+allow_lesser = true
+alignment = 3
+editable = false
+suffix = "cm"
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/front"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/front/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="right" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_au84g")
+value = 50.0
+max_value = 100.0
+suffix = "cm"
+
+[node name="range" type="VSlider" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/right"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+step = 0.01
+value = 41.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+
+[node name="value" type="SpinBox" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/right"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_k8mgv")
+step = 0.1
+allow_greater = true
+allow_lesser = true
+alignment = 3
+editable = false
+suffix = "cm"
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/right"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/right/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+
+[node name="left M" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_au84g")
+value = 50.0
+max_value = 100.0
+suffix = "m.s"
+
+[node name="range" type="VSlider" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left M"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+step = 0.01
+value = 41.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+
+[node name="value" type="SpinBox" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left M"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_k8mgv")
+step = 0.1
+allow_greater = true
+allow_lesser = true
+alignment = 3
+editable = false
+suffix = "cm"
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left M"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/left M/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right M" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_au84g")
+value = 50.0
+max_value = 100.0
+suffix = "m/s"
+
+[node name="range" type="VSlider" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/Right M"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+step = 0.01
+value = 41.0
+allow_greater = true
+allow_lesser = true
+editable = false
+scrollable = false
+
+[node name="value" type="SpinBox" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/Right M"]
+layout_mode = 2
+theme_override_icons/updown = SubResource("ImageTexture_k8mgv")
+step = 0.1
+allow_greater = true
+allow_lesser = true
+alignment = 3
+editable = false
+suffix = "cm"
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/Right M"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/Right M/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+layout_mode = 2
+
+[node name="odometry" type="HFlowContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+alignment = 1
+script = ExtResource("16_vhhka")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="x_label" type="LineEdit" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer"]
+layout_mode = 2
+editable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="y_label" type="LineEdit" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer2"]
+layout_mode = 2
+editable = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "θ :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="theta_label" type="LineEdit" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer3"]
+layout_mode = 2
+editable = false
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="linear_cmd" type="LineEdit" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="omega_cmd" type="LineEdit" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer4/VBoxContainer/sensorContent/odometry/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = SubResource("GDScript_gop3u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="controlSelection" type="HBoxContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/Panel/controlSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Manual "
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="modeToggle" type="CheckButton" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/Panel/controlSelection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/Panel/controlSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Automatic"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GridContainer" type="GridContainer" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="Control3" type="Control" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="forwardBtn" type="Button" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("17_bn30k")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control4" type="Control" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="leftBtn" type="Button" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("18_byty6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="backBtn" type="Button" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("14_mpog7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="rightBtn" type="Button" parent="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("19_mu20q")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="GUI/Control/VBoxContainer/sidePanel/leftSide/VBoxContainer/HBoxContainer/close" to="GUI/Control/VBoxContainer" method="_on_close_pressed"]
+[connection signal="pressed" from="GUI/Control/VBoxContainer/sidePanel/rightSide/VBoxContainer/HBoxContainer/close2" to="GUI/Control/VBoxContainer" method="_on_close_2_pressed"]
+[connection signal="pressed" from="GUI/Control/VBoxContainer/bottom/close3" to="GUI" method="_on_close_3_pressed"]
+[connection signal="pressed" from="GUI/Control/VBoxContainer/bottom/close3" to="GUI/Control/VBoxContainer" method="_on_close_3_pressed"]
+[connection signal="toggled" from="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3/VBoxContainer/Panel/controlSelection/modeToggle" to="GUI/Control/VBoxContainer/bottom/hbox/content/MarginContainer3" method="_on_mode_toggle_toggled"]

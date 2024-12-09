@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bffe6hu0v56d3"]
+
+[ext_resource type="Texture2D" uid="uid://bsyrtqhs6cau5" path="res://icons/icon.svg" id="1_4ibfh"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_ltosw"]
+[ext_resource type="Texture2D" uid="uid://bwkrhu7sxosvo" path="res://checkered.png" id="3_pdjns"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax40o"]
+radius = 64.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("3_pdjns")
+region_enabled = true
+region_rect = Rect2(256, 256, 4000, 4000)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(478, 274)
+script = ExtResource("2_ltosw")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.328125, 0.328125)
+texture = ExtResource("1_4ibfh")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(0.328125, 0.328125)
+shape = SubResource("CircleShape2D_ax40o")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+scale = Vector2(0.328125, 0.328125)
+limit_left = -2000
+limit_top = -2000
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5

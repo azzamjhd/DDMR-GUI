@@ -1,0 +1,30 @@
+{
+    "controls": [
+        {
+            "type": "button",
+            "id": "forward",
+            "label": "Forward"
+        },
+        {
+            "type": "button",
+            "id": "backward",
+            "label": "Backward"
+        },
+        {
+            "type": "button",
+            "id": "left",
+            "label": "Left"
+        },
+        {
+            "type": "button",
+            "id": "right",
+            "label": "Right"
+        },
+        {
+            "type": "label",
+            "id": "speed_label",
+            "label": "Speed",
+            "value": "0"
+        }
+    ]
+}

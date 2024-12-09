@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://o6ckko5uwbiu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ospcm"]
+sky_top_color = Color(0.429095, 0.709806, 0.811994, 1)
+sky_horizon_color = Color(0.854972, 0.924394, 0.949087, 1)
+ground_bottom_color = Color(0.052334, 0.0391321, 0.0255535, 1)
+ground_horizon_color = Color(0.115539, 0.209043, 0.239888, 1)
+
+[sub_resource type="Sky" id="Sky_6k1hk"]
+sky_material = SubResource("ProceduralSkyMaterial_ospcm")
+
+[sub_resource type="Environment" id="Environment_p8y8o"]
+background_mode = 1
+sky = SubResource("Sky_6k1hk")
+ambient_light_source = 2
+ambient_light_color = Color(0.445488, 0.445488, 0.445488, 1)
+ambient_light_sky_contribution = 0.67
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_us5pf"]
+size = Vector3(2, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vje1e"]
+albedo_color = Color(0.316785, 0.166978, 0.789053, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ypu0"]
+albedo_color = Color(0.950811, 0.414368, 5.77569e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yb2ow"]
+material = SubResource("StandardMaterial3D_3ypu0")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 50.0
+radial_segments = 4
+rings = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p8y8o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+motion_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_us5pf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
+calculate_tangents = false
+size = Vector3(2, 0.2, 1)
+material = SubResource("StandardMaterial3D_vje1e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 1, 1.5, 1)
+projection = 1
+size = 3.0
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("CylinderMesh_yb2ow")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_yb2ow")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+mesh = SubResource("CylinderMesh_yb2ow")

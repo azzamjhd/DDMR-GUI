@@ -1,0 +1,353 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpl5cyrr26jht"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_101a0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_101a0")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="start" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 53.0
+offset_right = 255.0
+offset_bottom = 84.0
+text = "start"
+
+[node name="stop" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 54.0
+offset_right = 347.0
+offset_bottom = 85.0
+text = "stop"
+
+[node name="reload" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 54.0
+offset_right = 461.0
+offset_bottom = 85.0
+text = "reload"
+
+[node name="URLoptions" type="OptionButton" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 588.0
+offset_top = 46.0
+offset_right = 823.0
+offset_bottom = 77.0
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "192.168.0.100"
+popup/item_0/id = 0
+popup/item_1/text = "robot.local"
+popup/item_1/id = 1
+popup/item_2/text = "custom"
+popup/item_2/id = 2
+
+[node name="URL" type="LineEdit" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 588.0
+offset_top = 84.0
+offset_right = 824.0
+offset_bottom = 115.0
+placeholder_text = "192.168.0.100"
+alignment = 1
+clear_button_enabled = true
+
+[node name="status" type="Label" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 71.0
+offset_top = 96.0
+offset_right = 282.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0.75, 0.225, 0.23375, 1)
+text = "not connected"
+
+[node name="textDisplay" type="TextEdit" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_left = 67.0
+offset_top = 120.0
+offset_right = 558.0
+offset_bottom = 465.0
+theme_override_font_sizes/font_size = 15
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_smooth = true
+
+[node name="input" type="LineEdit" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 70.0
+offset_top = 471.0
+offset_right = 225.0
+offset_bottom = 502.0
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 121.0
+offset_right = 843.0
+offset_bottom = 465.0
+current_tab = 3
+
+[node name="close" type="MarginContainer" parent="VBoxContainer/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/TabContainer/close"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Linear Velocity"
+
+[node name="linear" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "linear velocity of ddmr robot"
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Angular Velocity"
+
+[node name="omega" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "angular velocity of ddmr robot"
+max_value = 5.0
+step = 0.1
+value = 3.0
+
+[node name="Control" type="Control" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="closeL_button" type="Button" parent="VBoxContainer/Panel/TabContainer/close/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Set"
+
+[node name="open" type="MarginContainer" parent="VBoxContainer/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/TabContainer/open"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Right PWM"
+
+[node name="pwmR" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "right motor pwm"
+max_value = 255.0
+value = 128.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left PWM"
+
+[node name="pwmL" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "left motor pwm"
+max_value = 255.0
+value = 128.0
+
+[node name="Control" type="Control" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="openL_button" type="Button" parent="VBoxContainer/Panel/TabContainer/open/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Set"
+
+[node name="PID" type="MarginContainer" parent="VBoxContainer/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/TabContainer/PID"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kp"
+
+[node name="Kp" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 20.0
+allow_greater = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ki"
+
+[node name="Ki" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+allow_greater = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kd"
+
+[node name="Kd" type="SpinBox" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+allow_greater = true
+
+[node name="Control" type="Control" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="pidGains_button" type="Button" parent="VBoxContainer/Panel/TabContainer/PID/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Set"
+
+[node name="Auto" type="MarginContainer" parent="VBoxContainer/Panel/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/TabContainer/Auto"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Linear Velocity"
+
+[node name="SetLinear" type="Label" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="LinearVar" type="HSlider" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Angular Velocity"
+
+[node name="SetOmega" type="Label" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="OmegaVar" type="HSlider" parent="VBoxContainer/Panel/TabContainer/Auto/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 5.0
+step = 0.1
+value = 3.0
+
+[connection signal="pressed" from="VBoxContainer/Panel/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/TabContainer/close/VBoxContainer/closeL_button" to="." method="_on_close_l_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/TabContainer/open/VBoxContainer/openL_button" to="." method="_on_open_l_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/TabContainer/PID/VBoxContainer/pidGains_button" to="." method="_on_pid_gains_button_pressed"]
